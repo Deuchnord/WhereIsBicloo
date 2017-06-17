@@ -1,5 +1,7 @@
 package fr.deuchnord.wheresbicloo.util.bicloo;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,12 +14,12 @@ import java.util.Date;
 public class Station {
     protected long number;
     protected String name, address;
-    protected Position position;
+    protected LatLng position;
     protected boolean banking, bonus, isOpen;
     protected int bikeStands, bikeStandAvailable, availableBikes;
     protected Date lastUpdate;
 
-    public Station(long number, String name, String address, Position position, boolean banking,
+    public Station(long number, String name, String address, LatLng position, boolean banking,
                    boolean bonus, boolean isOpen, int bikeStands, int bikeStandAvailable,
                    int availableBikes, Date lastUpdate) {
         this.number = number;
@@ -39,7 +41,7 @@ public class Station {
                 jsonObject.getBoolean("bonus"), jsonObject.getString("status").equals("OPEN"),
                 jsonObject.getInt("bike_stands"), jsonObject.getInt("available_bike_stands"),
                 jsonObject.getInt("available_bikes"), new Date(jsonObject.getLong("last_update")));
-        this.position = new Position(jsonObject.getJSONObject("position").getDouble("lat"), jsonObject.getJSONObject("position").getDouble("long"));
+        this.position = new LatLng(jsonObject.getJSONObject("position").getDouble("lat"), jsonObject.getJSONObject("position").getDouble("long"));
     }
 
     public long getNumber() {
@@ -54,7 +56,7 @@ public class Station {
         return address;
     }
 
-    public Position getPosition() {
+    public LatLng getPosition() {
         return position;
     }
 
@@ -84,30 +86,5 @@ public class Station {
 
     public Date getLastUpdate() {
         return lastUpdate;
-    }
-
-    public class Position {
-        private double latitude, longitude;
-
-        public Position(double latitude, double longitude) {
-            this.latitude = latitude;
-            this.longitude = longitude;
-        }
-
-        public double getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(double latitude) {
-            this.latitude = latitude;
-        }
-
-        public double getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(double longitude) {
-            this.longitude = longitude;
-        }
     }
 }
