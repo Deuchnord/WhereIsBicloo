@@ -1,5 +1,7 @@
 package fr.deuchnord.wheresbicloo.util.bicloo;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
@@ -7,11 +9,14 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import fr.deuchnord.wheresbicloo.util.JSONAPI;
+
 /**
  * Created by jerome on 11/06/17.
  */
 
 public class Station {
+    private String TAG = "Station";
     protected long number;
     protected String name, address;
     protected LatLng position;
@@ -37,11 +42,16 @@ public class Station {
 
     public Station(JSONObject jsonObject) throws JSONException {
         this(jsonObject.getLong("number"), jsonObject.getString("name"),
-                jsonObject.getString("address"), null, jsonObject.getBoolean("banking"),
+                jsonObject.getString("address"), new LatLng(jsonObject.getJSONObject("position").getDouble("lat"),
+                jsonObject.getJSONObject("position").getDouble("lng")), jsonObject.getBoolean("banking"),
                 jsonObject.getBoolean("bonus"), jsonObject.getString("status").equals("OPEN"),
                 jsonObject.getInt("bike_stands"), jsonObject.getInt("available_bike_stands"),
                 jsonObject.getInt("available_bikes"), new Date(jsonObject.getLong("last_update")));
-        this.position = new LatLng(jsonObject.getJSONObject("position").getDouble("lat"), jsonObject.getJSONObject("position").getDouble("long"));
+        Log.d(TAG, "Station: " + this);
+    }
+
+    public Station(String jsonString) throws JSONException {
+        this(new JSONObject(jsonString));
     }
 
     public long getNumber() {
@@ -86,5 +96,10 @@ public class Station {
 
     public Date getLastUpdate() {
         return lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Station " + name;
     }
 }

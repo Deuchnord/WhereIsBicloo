@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Where\'s Bicloo</string>
-    <string name="title_activity_maps">Bicloo Map</string>
+
+    <!-- Errors -->
+
+    <string name="err_connectivity">"Sorry, could not fetch the list of stations.\nCheck your Internet connectivity and try again.\nProblem was: "</string>
+    <string name="err_invalid_json">"Sorry, the server sent a response that could not be understood.\nProblem was: "</string>
+
+    <!-- Buttons -->
+
+    <string name="btn_try_again">Try again</string>
+    <string name="btn_quit">Quit</string>
 </resources>
