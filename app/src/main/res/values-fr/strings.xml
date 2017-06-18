@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Où est Bicloo ?</string>
+    <string name="btn_quit">Quitter</string>
+    <string name="btn_try_again">Réessayer</string>
+    <string name="err_connectivity">\"Impossible d\'obtenir la liste de stations.\nVérifiez votre connexion Internet et réessayez.\nL\'erreur retournée était : \"</string>
+    <string name="err_invalid_json">"\"Le serveur a retourné une réponse incompréhensible.\nLe problèmes était : \" "</string>
+</resources>
