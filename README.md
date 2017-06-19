@@ -1,6 +1,6 @@
 # Where's Bicloo?
 
-![Where's Bicloo logo](/home/jerome/workspace/Where'sBicloo/app/src/main/ic_launcher_round-readme.png)
+![Where's Bicloo logo](app/src/main/ic_launcher_round-readme.png)
 
 Bicloo® is the bike-sharing service in Nantes, France.
 
